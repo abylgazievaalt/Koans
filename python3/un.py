@@ -1,21 +1,11 @@
-try:
-    file = open("example_file.txt")
+class Cl():
+	def coroutine(self):
+	    result = yield
+	    yield result
 
-    try:
-        def make_upcase(line):
-        
-        	return line.strip().upper()
-        
-        upcase_lines = map(make_upcase, file.readlines())
+	generator = coroutine(self)
 
-        for el in upcase_lines:
-
-        	print(el)
-                
-    finally:
-                # Arg, this is ugly.
-                # We will figure out how to fix this later.
-                file.close()
-except IOError:
-            # should never happen
-    self.fail()
+	try:
+	    generator.send(1 + 2)
+	except TypeError as ex:
+	   print(ex.args[0])
