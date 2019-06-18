@@ -21,17 +21,19 @@ from runner.koan import *
 class Proxy(object):
     def __init__(self, target_object):
         # WRITE CODE HERE
-        object.__setattr__(self, '_messages', [])
+        #object.__setattr__(self, '_messages', [])
+        self._messages = []
         #initialize '_obj' attribute last. Trust me on this!
-        object.__setattr__(self, '_obj', target_object)
+        #object.__setattr__(self, '_obj', target_object)
+        self._obj = target_object
 
     # WRITE CODE HERE
-    def __getattribute__(self, attr_name):
+    def __getattr__(self, attr_name):
         names = ['_obj', '_messages', 'was_called', 'number_of_times_called']
         if attr_name in names:
             return object.__getattribute__(self, attr_name)
         else:
-            object.__getattribute__(self, '_messages').append(attr_name)
+            self._messages.append(attr_name)
             return self._obj.__getattribute__(attr_name)
 
     def __setattr__(self, attr_name, value):

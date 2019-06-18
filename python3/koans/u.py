@@ -1,17 +1,5 @@
-class ClosingSale:
-    def __init__(self):
-        self.hamsters = 7
-        self.zebras = 84
+import re
+string = "pecks.xlx\n" + "orders1.xls\n"+ "apec1.xls\n"+ "na1.xls\n"+ "na2.xls\n"+ "sa1.xls"
 
-    def cameras(self):
-        return 34
-
-    def toilet_brushes(self):
-        return 48
-
-    def jellies(self):
-        return 5
-crazy_discounts = ClosingSale()
-del ClosingSale.toilet_brushes
-still_available = crazy_discounts.toilet_brushes()
-
+change_this_search_string = '[nsc]a[2-9].xls'
+print(re.findall(change_this_search_string, string))
